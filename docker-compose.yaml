@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  obfuscator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./projects:/workspace
+      - ~/.obfuscator:/root/.obfuscator
+    environment:
+      - OBFUSCATOR_CONFIG=/root/.obfuscator/config.yaml
+      - OBFUSCATOR_DEBUG=false
+    command: ["-i"]
+    
+  obfuscator-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    ports:
+      - "8080:8080"
+    volumes:
+      - ~/.obfuscator:/root/.obfuscator
+    environment:
+      - API_KEY=${OBFUSCATOR_API_KEY}
+      - PORT=8080

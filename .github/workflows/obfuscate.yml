@@ -1,0 +1,45 @@
+
+name: Obfuscate Code
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'src/**'
+      - '!src/**/*.md'
+
+jobs:
+  obfuscate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.19
+        
+    - name: Build obfuscator
+      run: |
+        go build -o obfuscator .
+        
+    - name: Obfuscate source code
+      env:
+        MASTER_KEY: ${{ secrets.OBFUSCATOR_MASTER_KEY }}
+      run: |
+        echo "$MASTER_KEY" > master.key
+        ./obfuscator -cmd=obfuscate \
+          -source=./src \
+          -target=./obfuscated \
+          -keyfile=master.key
+        rm master.key
+        
+    - name: Commit obfuscated code
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add obfuscated/
+        git commit -m "Auto-obfuscate source code"
+        git push
+        

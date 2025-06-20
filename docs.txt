@@ -29,11 +29,11 @@ A powerful Go-based tool for securing your source code in GitHub repositories th
 
 ```bash
 # Clone the repository
-git clone https://github.com/lendral3n/obfuscator.git
-cd obfuscator
+git clone https://github.com/yourusername/github-code-obfuscator.git
+cd github-code-obfuscator
 
 # Install dependencies
-go mod init github.com/lendral3n/obfuscator
+go mod init github.com/yourusername/github-code-obfuscator
 go get github.com/go-git/go-git/v5
 go get golang.org/x/term
 
@@ -244,10 +244,10 @@ This tool is for legitimate security purposes only. Users are responsible for:
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/lendral3n/obfuscator/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/lendral3n/obfuscator/discussions)
-- **Email**: l3nteam@gmail.com
+- **Issues**: [GitHub Issues](https://github.com/yourusername/github-code-obfuscator/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/yourusername/github-code-obfuscator/discussions)
+- **Email**: support@example.com
 
 ---
 
-Made with ❤️ by [L3N]
+Made with ❤️ by [Your Name]
