@@ -1,0 +1,75 @@
+# config.yaml - Example configuration file
+
+# Basic configuration
+obfuscator:
+  version: "1.0.0"
+  master_key_file: "~/.obfuscator/master.key"
+  
+# Encryption settings
+encryption:
+  algorithm: "AES-256-GCM"
+  key_derivation: "SHA-256"
+  
+# Compression settings  
+compression:
+  enabled: true
+  level: 9  # 1-9, where 9 is best compression
+  
+# File patterns
+patterns:
+  # Files to exclude from obfuscation
+  exclude:
+    - "*.md"
+    - "*.txt"
+    - ".gitignore"
+    - "LICENSE"
+    - "*.test"
+    - "*_test.go"
+    
+  # Only include these files (if specified, exclude is ignored)
+  include_only: []
+    # - "*.go"
+    # - "*.js"
+    # - "*.py"
+    
+# Advanced features
+advanced:
+  # Time-limited access
+  time_limit:
+    enabled: false
+    expiration: "2024-12-31T23:59:59Z"
+    
+  # Maximum deobfuscation attempts
+  max_deobfuscations:
+    enabled: false
+    count: 10
+    
+  # Code analysis
+  analyze_code: true
+  
+  # Security audit
+  auto_audit: true
+  
+# GitHub integration
+github:
+  username: ""
+  token_file: "~/.obfuscator/github_token"
+  default_branch: "main"
+  
+# Batch processing
+batch:
+  max_workers: 4
+  queue_size: 100
+  
+# Performance monitoring
+monitoring:
+  enabled: true
+  metrics_file: "~/.obfuscator/metrics.json"
+  
+# Logging
+logging:
+  level: "info"  # debug, info, warn, error
+  file: "~/.obfuscator/obfuscator.log"
+  max_size: 10  # MB
+  max_backups: 3
+  

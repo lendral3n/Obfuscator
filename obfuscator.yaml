@@ -1,0 +1,27 @@
+project:
+  name: "my-sensitive-project"
+  description: "Proprietary algorithm implementation"
+  
+# Obfuscation settings for this project
+settings:
+  # Override global patterns
+  exclude_patterns:
+    - "docs/*"
+    - "examples/*"
+    - "*.example"
+    
+  # Custom obfuscation seed per project
+  obfuscation_seed: "project-specific-seed-12345"
+  
+  # Enable extra security features
+  extra_security:
+    double_encryption: false
+    random_padding: true
+    
+# Backup settings
+backup:
+  enabled: true
+  location: "~/.obfuscator/backups/"
+  retention_days: 30
+  
+---
